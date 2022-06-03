@@ -3,7 +3,7 @@ class Interpreter
 {
 private:
 	unsigned short Pc = 1000;
-	int mem[2000];
+	char mem[2000];
 public:
 	Interpreter();
 	~Interpreter();
