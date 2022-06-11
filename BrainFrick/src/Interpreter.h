@@ -4,15 +4,15 @@
 class Interpreter
 {
 private:
-	unsigned short Pc = 1000;
+	unsigned short Pointer = 1000;
 	char mem[2000];
 	std::stack<int> loopStart;
 public:
 	Interpreter();
 	~Interpreter();
 
-	void MovePcLeft();
-	void MovePcRight();
+	void MovePtrLeft();
+	void MovePtrRight();
 	void Add();
 	void Sub();
 	void StartLoop(int pc);

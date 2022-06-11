@@ -3,39 +3,39 @@
 Interpreter::Interpreter() {}
 Interpreter::~Interpreter() {}
 
-void Interpreter::MovePcLeft() 
+void Interpreter::MovePtrLeft() 
 {
-	Pc--;
+	Pointer--;
 }
 
-void Interpreter::MovePcRight()
+void Interpreter::MovePtrRight()
 {
-	Pc++;
+	Pointer++;
 }
 
 void Interpreter::Add()
 {
-	mem[Pc]++;
+	mem[Pointer]++;
 }
 
 void Interpreter::Sub()
 {
-	mem[Pc]--;
+	mem[Pointer]--;
 }
 
-void Interpreter::StartLoop(int pc) 
+void Interpreter::StartLoop(int Pointer) 
 {
-	loopStart.push(pc);
+	loopStart.push(Pointer);
 }
 
-void Interpreter::EndLoop(int& pc) 
+void Interpreter::EndLoop(int& Pointer) 
 {
-	if (mem[Pc] == 0) 
+	if (mem[Pointer] == 0) 
 	{
 		loopStart.pop();
 	}
 	else 
 	{
-		pc = loopStart.top();
+		Pointer = loopStart.top();
 	}
 }
