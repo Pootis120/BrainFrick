@@ -37,8 +37,10 @@ int main(int argc, char** argv)
 				machine.Sub();
 				break;
 			case '[':
+				machine.StartLoop(i);
 				break;
 			case ']':
+				machine.EndLoop(i);
 				break;
 			case '.':
 				break;
