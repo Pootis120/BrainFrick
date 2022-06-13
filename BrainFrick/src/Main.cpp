@@ -25,10 +25,10 @@ int main(int argc, char** argv)
 			switch(contents[i]) 
 			{
 			case '<' :
-				machine.MovePcLeft();
+				machine.MovePtrLeft();
 				break;
 			case '>':
-				machine.MovePcRight();
+				machine.MovePtrRight();
 				break;
 			case '+':
 				machine.Add();
@@ -43,6 +43,7 @@ int main(int argc, char** argv)
 				machine.EndLoop(i);
 				break;
 			case '.':
+				machine.Print();
 				break;
 			case ',':
 				break;

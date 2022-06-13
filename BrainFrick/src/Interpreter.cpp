@@ -39,3 +39,10 @@ void Interpreter::EndLoop(int& Pointer)
 		Pointer = loopStart.top();
 	}
 }
+
+void Interpreter::Print() 
+{
+	//printf((const char*)mem[Pointer]);
+	//std::cout << mem[Pointer];
+	std::cout << (int)mem[Pointer];
+}
