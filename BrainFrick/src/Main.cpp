@@ -46,6 +46,7 @@ int main(int argc, char** argv)
 				machine.Print();
 				break;
 			case ',':
+				machine.GetChar();
 				break;
 			}
 		}
