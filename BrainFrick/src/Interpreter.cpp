@@ -23,12 +23,12 @@ void Interpreter::Sub()
 	mem[Pointer]--;
 }
 
-void Interpreter::StartLoop(int Pointer) 
+void Interpreter::StartLoop(int pc) 
 {
-	loopStart.push(Pointer);
+	loopStart.push(pc);
 }
 
-void Interpreter::EndLoop(int& Pointer) 
+void Interpreter::EndLoop(int& pc) 
 {
 	if (mem[Pointer] == 0) 
 	{
@@ -36,13 +36,12 @@ void Interpreter::EndLoop(int& Pointer)
 	}
 	else 
 	{
-		Pointer = loopStart.top();
+		pc = loopStart.top();
 	}
 }
 
 void Interpreter::Print() 
 {
 	//printf((const char*)mem[Pointer]);
-	//std::cout << mem[Pointer];
-	std::cout << (int)mem[Pointer];
+	std::cout << mem[Pointer];
 }
