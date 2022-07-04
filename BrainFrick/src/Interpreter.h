@@ -12,6 +12,8 @@ public:
 	Interpreter();
 	~Interpreter();
 
+	void RunInput(std::string contents);
+
 	void MovePtrLeft();
 	void MovePtrRight();
 	void Add();

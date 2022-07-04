@@ -3,6 +3,40 @@
 Interpreter::Interpreter() {}
 Interpreter::~Interpreter() {}
 
+void Interpreter::RunInput(std::string contents)
+{
+	for (int i = 0; i < contents.size(); i++)
+	{
+		switch (contents[i])
+		{
+		case '<':
+			MovePtrLeft();
+			break;
+		case '>':
+			MovePtrRight();
+			break;
+		case '+':
+			Add();
+			break;
+		case '-':
+			Sub();
+			break;
+		case '[':
+			StartLoop(i);
+			break;
+		case ']':
+			EndLoop(i);
+			break;
+		case '.':
+			Print();
+			break;
+		case ',':
+			GetChar();
+			break;
+		}
+	}
+}
+
 void Interpreter::MovePtrLeft() 
 {
 	Pointer--;

@@ -20,36 +20,7 @@ int main(int argc, char** argv)
 		std::cout << contents << std::endl;
 
 		std::cout << "Program start: " << std::endl;
-		for (int i = 0; i < contents.size(); i++) 
-		{
-			switch(contents[i]) 
-			{
-			case '<' :
-				machine.MovePtrLeft();
-				break;
-			case '>':
-				machine.MovePtrRight();
-				break;
-			case '+':
-				machine.Add();
-				break;
-			case '-':
-				machine.Sub();
-				break;
-			case '[':
-				machine.StartLoop(i);
-				break;
-			case ']':
-				machine.EndLoop(i);
-				break;
-			case '.':
-				machine.Print();
-				break;
-			case ',':
-				machine.GetChar();
-				break;
-			}
-		}
+		machine.RunInput(contents);
 		std::cout << std::endl << "Program end" << std::endl;
 		std::cin.get();
 	}
