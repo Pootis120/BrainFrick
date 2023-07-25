@@ -10,7 +10,8 @@ void ASSERT(bool initialized, char* messageOnFail)
   }
 }
 
-int main() {
+char* ReadFile(char* filePath) 
+{
   FILE* inputFile;
   char* outtext;
   long numbytes;
@@ -25,6 +26,14 @@ int main() {
   ASSERT(outtext, "Could not initialize text");
   fread(outtext, sizeof(char), numbytes, inputFile);
   fclose(inputFile);
-  printf("%s\n", outtext);
+
+  return outtext;
+}
+
+int main() {
+  char* text = ReadFile("source.txt");
+  
+  printf("%s\n", text);
+  free(text);
   return 0;
 } 
