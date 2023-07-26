@@ -31,12 +31,12 @@ char* ReadFile(char* filePath)
   return outtext;
 }
 
-//commit to github: feat: made struct and interpreter
-
 struct MemoryVars 
 {
   int Pc;
   int* memory;
+  int* loopBreakPoints;
+  int nestedlooplayer;
 };
 
 void Interpret(char* sourceCode) 
@@ -44,6 +44,8 @@ void Interpret(char* sourceCode)
   struct MemoryVars mem;
   mem.memory = (int*)calloc(100 * sizeof(int), sizeof(int));
   mem.Pc = 0;
+  mem.loopBreakPoints = (int*)calloc(10 * sizeof(int), sizeof(int));
+  mem.nestedlooplayer = -1;
   for (int i = 0, max = strlen(sourceCode); i < max; i++) 
   {
     switch (sourceCode[i]) 
@@ -59,6 +61,21 @@ void Interpret(char* sourceCode)
         break;
       case '-' :
         mem.memory[mem.Pc]--;
+        break;
+      case '[' :
+        mem.nestedlooplayer++;
+        mem.loopBreakPoints[mem.nestedlooplayer] = i;
+        break;
+      case ']' :
+        if (mem.memory[mem.Pc] != 0) 
+        {
+          mem.memory[mem.Pc]--;
+          i = mem.loopBreakPoints[mem.nestedlooplayer];
+        }
+        else 
+        {
+          mem.nestedlooplayer--;
+        }
         break;
       case '.' :
         putchar(mem.memory[mem.Pc]);
