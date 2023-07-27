@@ -69,7 +69,6 @@ void Interpret(char* sourceCode)
       case ']' :
         if (mem.memory[mem.Pc] != 0) 
         {
-          mem.memory[mem.Pc]--;
           i = mem.loopBreakPoints[mem.nestedlooplayer];
         }
         else 
